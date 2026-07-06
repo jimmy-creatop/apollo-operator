@@ -1,0 +1,4 @@
+lists/
+*.csv
+.env
+.DS_Store
