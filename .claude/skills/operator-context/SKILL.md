@@ -148,6 +148,7 @@ Identify the request and route.
 | Who to target, ICP, personas, saved searches | **Level 1, ICP and targeting** | `apollo-icp-builder` |
 | Finding, enriching, and grading a list | **Level 2, List building** | `apollo-list-builder`, `list-quality-scorecard` |
 | Writing or reviewing copy, building the sequence | **Level 3, Copy and sequences** | `apollo-sequence-builder`, `sequence-reviewer` |
+| Enrolling the list, going live, pulling contacts | **Go-live, the last mile** | `apollo-go-live` |
 | Mailboxes, warmup, spam, bounces, sending health | **Level 4, Deliverability and send** | `apollo-deliverability` |
 | Is it working, experiments, ongoing ops | **Level 5, Iterate** | `positive-reply-scoring`, `experiment-design`, `weekly-rhythm` |
 | A reason to reach out now (buying signals, timing) | **Signals** | `apollo-signals` |

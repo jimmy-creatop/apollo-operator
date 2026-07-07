@@ -11,6 +11,7 @@ The Apollo MCP is powerful but has no opinion. Apollo Operator is the expert lay
 - **ICP and targeting:** `apollo-icp-builder`
 - **List building:** `apollo-list-builder`, `list-quality-scorecard`
 - **Copy and sequences:** `apollo-sequence-builder`, `sequence-reviewer`
+- **Go-live:** `apollo-go-live`
 - **Deliverability:** `apollo-deliverability`
 - **Iterate:** `positive-reply-scoring`, `experiment-design`, `weekly-rhythm`
 - **Signals:** `apollo-signals`
