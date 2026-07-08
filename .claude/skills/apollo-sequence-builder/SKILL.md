@@ -20,7 +20,7 @@ From `../operator-context/references/outbound-principles.md` and the core copy r
 - **One CTA, soft.** "Worth a quick look?" not "Book a 30-minute demo."
 - **One focus per email: outcome or mechanism, never both.**
 - **Rotate the angle across steps.** Never repeat the same value prop.
-- **Subject: lowercase, 1 to 3 words, reused across the thread.**
+- **Subject: lowercase, 1 to 3 words. Reused down the thread (steps 2 and 3 auto-reply in-thread), but a different angle or offer usually earns its own subject** (see step 5).
 - **Plain text. No em dashes. No buzzwords** (leverage, synergy, revolutionary, best-in-class). Oxford comma.
 - **Step 3 is a routing question or a soft breakup. No new pitch.**
 
@@ -48,7 +48,7 @@ Run `sequence-reviewer` on the draft. Fix what it flags. Then build it in Apollo
 - Delays are **relative to the previous step**: step 1 `wait_time: 0`, step 2 `wait_time: 3`, step 3 `wait_time: 4` (that is Day 7, not Day 11). This is the mistake everyone makes.
 - 2 `emailer_touches` per step (the A/B variants). `creation_type: manual` (a human wrote it). Tone from the profile voice (Direct, Formal, or Casual).
 - **Format the body so it breaks into paragraphs.** Write 2 to 3 short paragraphs, not one wall of text. Separate them with `<br><br>` inside a single `<div>`, like `<div>First paragraph.<br><br>Second paragraph.<br><br>Closing line and CTA.</div>`. This is not cosmetic: live-tested on Apollo, `<br><br>` is the only structure Apollo keeps as real line breaks in the sent text. Multiple `<div>` blocks collapse to a single space and `<p>` tags collapse to nothing, so both send as a run-on paragraph. Never dump the whole email into one flat `<div>`.
-- **Subject A/B is deliberate, not a bug.** Both variants of a step reuse the same subject on purpose: the subject has to carry across steps so 2 and 3 reply in-thread, and the A/B test changes only the body angle (one variable). If you do want to test subjects, test them on step 1 only, where each lead still threads under whichever subject it got.
+- **Subjects: reuse down the thread, vary across angles.** Two different axes, do not confuse them. Down a thread (step 1 to 2 to 3) the subject carries so the follow-ups stay threaded, and Apollo handles this for you: steps 2 and 3 are `reply_to_thread` with an empty subject. Across A/B variants that test different angles or offers, the norm is a *different* subject per variant, because a new angle usually earns its own subject line. Each lead still threads correctly under whichever subject it got on step 1. Only reuse the same subject across variants when you already know which subject lines win (usually after running outbound for a while), which is the exception, not the default.
 
 ### 6. Hand to a human to activate
 Report the sequence id and a short step summary. Activation is `apollo_emailer_campaigns_approve`, and only a person runs it, after confirming the sender mailbox, the schedule, and the copy. Recommend, do not activate.

@@ -25,7 +25,11 @@ Find that fact, and you have your signal. The best ones are usually discovered p
 
 ## What Apollo can actually do (mostly its UI)
 
-The Apollo MCP can pull one signal directly: `apollo_organizations_job_postings` (a company's open roles, 1 credit per org, so use it when the hiring signal genuinely fits your offer). Most of Apollo's signal machinery lives in the UI, and it is worth knowing (see `../operator-context/references/apollo-kb-map.md`):
+The Apollo MCP handles the hiring signal two ways, and the difference matters (both learned from live testing):
+- **To find companies hiring at scale, use the search filter, not the one-org lookup.** In people or company search, `q_organization_job_titles` ("currently hiring for marketing"), `organization_num_jobs_range`, and `organization_job_posted_at_range` filter your whole list down to companies showing the signal. Company search also returns `organization_headcount_*_month_growth` inline, so a growth signal comes free with the results. This is how you turn a signal into a list.
+- **To inspect one specific target, use `apollo_organizations_job_postings`** (a single company's open roles, 1 credit per org). Caveat from testing: small and private companies frequently return zero postings even when they are active, so this tool is far more useful for larger or tech-forward targets than for small manufacturers. If the hiring signal keeps coming back empty for your ICP, that is a sign the signal does not fit your offer, not that the company is quiet.
+
+Most of the rest of Apollo's signal machinery lives in the UI, and it is worth knowing (see `../operator-context/references/apollo-kb-map.md`):
 
 - **Website visitors:** Apollo can identify companies visiting your site, and its Chrome extension gives open tracking in Gmail. Visiting your pricing page is a real signal.
 - **Search alerts:** save a search and get alerted when new people match it. A standing signal feed.

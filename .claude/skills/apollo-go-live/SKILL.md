@@ -31,9 +31,10 @@ Call `apollo_email_accounts_index`. Auto-select the mailbox where `default: true
 Enroll into the sequence while it is still inactive, so contacts queue but no email goes out until activation. Use `apollo_emailer_campaigns_add_contact_ids`:
 - `id` and `emailer_campaign_id`: both the sequence id.
 - `send_email_from_email_account_id`: the mailbox from step 2 (string, or an array to rotate).
-- Target the list one of two ways: `label_names: ["<your L2 list name>"]` to enroll the whole graded Apollo List, or explicit `contact_ids` for a subset. The label route is the clean Level 2 handoff.
+- **Enroll by `contact_ids`.** Collect the IDs of your graded list with `apollo_contacts_search` (search the list, take each contact's `id`), then pass them as `contact_ids`. The tool advertises a `label_names` shortcut to enroll a whole Apollo List by name, but in live testing it errors ("Required parameter 'contact_ids' missing"), so do not rely on it. Resolve the label to contact IDs yourself and pass `contact_ids`.
 - **Leave `sequence_unverified_email: false`** (the default). This makes Apollo refuse unverified addresses, which enforces the verify-everything rule at the door. Do not flip it to true to "get more in."
 - Only contacts can be enrolled. If your people are search results but not yet contacts, enrich and create them first (Level 2), then enroll.
+- **Verify enrollment.** Each enrolled contact comes back with the sequence id in its `emailer_campaign_ids`. A removal (step 6) sets it back to empty. Confirm rather than trusting the call.
 
 ### 4. Human review (surface, then wait)
 Before activation, show the operator a plain summary and stop:

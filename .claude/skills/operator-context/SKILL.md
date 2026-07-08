@@ -105,7 +105,7 @@ Reply rate is engagement. Positive reply rate (intent) is the real scoreboard, a
 - **One CTA, soft.** "Worth a quick look?" not "Book a 30-minute demo."
 - **Lead with their problem, not your feature.** One focus per email: outcome or mechanism, never both.
 - **3-step sequence, 2 variations per step.** Day 0 / Day 3 / Day 7. Change the value-prop angle each step, never repeat.
-- **Subject lines: lowercase, 1 to 3 words, reused across steps** to keep the thread.
+- **Subject lines: lowercase, 1 to 3 words.** Reused down a thread (steps 2 and 3 auto-reply in-thread) to keep it threaded; a different angle or offer usually earns its own subject (see Level 3).
 - **No em dashes. No buzzwords** (leverage, synergy, revolutionary, best-in-class, game-changing). Oxford comma. Sentence case.
 
 Full frameworks and the persona split (ATL executive vs BTL manager/IC) live in **Level 3**.
