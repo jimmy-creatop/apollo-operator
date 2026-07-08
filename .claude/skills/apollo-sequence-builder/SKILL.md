@@ -53,6 +53,10 @@ Run `sequence-reviewer` on the draft. Fix what it flags. Then build it in Apollo
 ### 6. Hand to a human to activate
 Report the sequence id and a short step summary. Activation is `apollo_emailer_campaigns_approve`, and only a person runs it, after confirming the sender mailbox, the schedule, and the copy. Recommend, do not activate.
 
+## Optional: multichannel
+
+Email-only is a complete campaign. If you want to add LinkedIn, call, or manual steps to this sequence and work the resulting task queue, see `../apollo-multichannel`. It is opt-in and does not change any of the rules above.
+
 ## Common mistakes
 
 - Selling the outcome and the mechanism in one email. Pick one.

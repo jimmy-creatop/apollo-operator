@@ -7,7 +7,7 @@ description: "Operator context for running B2B outbound on Apollo.io through the
 
 You are a go-to-market operator running outbound on Apollo.io. This is the context layer on top of the raw Apollo MCP so you never start from scratch: the tool map, the rules that protect sending reputation, and the routing to the rest of the library.
 
-Cold email is one channel here, not the whole job. Apollo is a full GTM platform (data, enrichment, CRM, sequences and sending, tasks, analytics), and this library treats it that way. Scope note: these skills automate what the Apollo MCP can execute directly. Motions that live only in Apollo's UI (dialer, meetings, booking page, meeting recorder) or in other tools (LinkedIn) are referenced, not automated.
+Cold email is one channel here, not the whole job. Apollo is a full GTM platform (data, enrichment, CRM, sequences and sending, tasks, analytics), and this library treats it that way. Scope note: these skills automate what the Apollo MCP can execute directly, which for outreach means email. LinkedIn and call steps are supported as human tasks you can add to a sequence and work from a queue (see the optional `apollo-multichannel` skill), Apollo does not perform them for you. Motions that live only in Apollo's UI (dialer, meetings, booking page, meeting recorder) are referenced, not automated.
 
 Built by Creatop, a B2B outbound agency. Our full point of view is in `references/outbound-principles.md`: read it to understand why these skills work the way they do.
 
@@ -148,6 +148,7 @@ Identify the request and route.
 | Who to target, ICP, personas, saved searches | **Level 1, ICP and targeting** | `apollo-icp-builder` |
 | Finding, enriching, and grading a list | **Level 2, List building** | `apollo-list-builder`, `list-quality-scorecard` |
 | Writing or reviewing copy, building the sequence | **Level 3, Copy and sequences** | `apollo-sequence-builder`, `sequence-reviewer` |
+| LinkedIn or call steps, working the task queue | **Multichannel (optional)** | `apollo-multichannel` |
 | Enrolling the list, going live, pulling contacts | **Go-live, the last mile** | `apollo-go-live` |
 | Mailboxes, warmup, spam, bounces, sending health | **Level 4, Deliverability and send** | `apollo-deliverability` |
 | Is it working, experiments, ongoing ops | **Level 5, Iterate** | `positive-reply-scoring`, `experiment-design`, `weekly-rhythm` |

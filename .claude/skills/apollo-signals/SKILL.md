@@ -23,18 +23,30 @@ Find that fact, and you have your signal. The best ones are usually discovered p
 - Write it as a rule you can check: "sells to X," "runs paid ads," "has a public pricing page," "exhibits at Y."
 - Then decide how to detect it: a native Apollo filter, a research check Claude runs per company, or a tool.
 
-## What Apollo can actually do (mostly its UI)
+## The signal menu the MCP can detect (all live-tested)
 
-The Apollo MCP handles the hiring signal two ways, and the difference matters (both learned from live testing):
-- **To find companies hiring at scale, use the search filter, not the one-org lookup.** In people or company search, `q_organization_job_titles` ("currently hiring for marketing"), `organization_num_jobs_range`, and `organization_job_posted_at_range` filter your whole list down to companies showing the signal. Company search also returns `organization_headcount_*_month_growth` inline, so a growth signal comes free with the results. This is how you turn a signal into a list.
-- **To inspect one specific target, use `apollo_organizations_job_postings`** (a single company's open roles, 1 credit per org). Caveat from testing: small and private companies frequently return zero postings even when they are active, so this tool is far more useful for larger or tech-forward targets than for small manufacturers. If the hiring signal keeps coming back empty for your ICP, that is a sign the signal does not fit your offer, not that the company is quiet.
+Every signal below works as a **search filter** in people or company search, which is how you turn a signal into a list. All were validated live on a real Apollo account. Keep the offer-fit rule: a signal is worth using only if it maps to what you sell.
 
-Most of the rest of Apollo's signal machinery lives in the UI, and it is worth knowing (see `../operator-context/references/apollo-kb-map.md`):
+- **Hiring for a role:** `q_organization_job_titles`, `organization_num_jobs_range`, `organization_job_posted_at_range`, `organization_job_locations`. To inspect one specific company's roles, use `apollo_organizations_job_postings` (1 credit per org). Caveat from testing: small and private companies often return zero postings even when active, so this signal fits larger or tech-forward targets far better than small firms. If it keeps coming back empty for your ICP, the signal does not fit your offer, the company is not necessarily quiet.
+- **Headcount growth:** `organization_headcount_growth_range` + `organization_headcount_growth_past_n_months`. Every company-search result also carries `organization_headcount_*_month_growth` inline, so you get the growth read for free.
+- **Recently funded:** `latest_funding_date_range`, `latest_funding_amount_range`, `total_funding_range`.
+- **Technology adoption:** `currently_using_any_of_technology_uids` (also `_all_of_`, and the `not_` exclusion). "Uses or added tool X."
+- **New in role (tenure):** `person_days_in_current_title_range` in people search. A fresh decision-maker in the seat.
+- **Job change:** `contact_job_changed` + `job_change_new_organization_ids` in contacts search. Returns a full change event (old title, old company, new company), so you know exactly who moved where. One of the strongest B2B signals: your champion just landed somewhere new.
+- **Company maturity:** `organization_founded_year_range`.
+- **Department size or growth:** `organization_department_or_subdepartment_counts` (for example, a marketing team of 5 or more).
+
+Some of these are labeled advanced filters and can return an upgrade-required error on free Apollo plans (all worked on the paid plan we tested). If one errors, it is gated on your plan, fall back to another signal.
+
+## What still lives in Apollo's UI only
+
+Worth knowing, but the MCP cannot execute these (see `../operator-context/references/apollo-kb-map.md`):
 
 - **Website visitors:** Apollo can identify companies visiting your site, and its Chrome extension gives open tracking in Gmail. Visiting your pricing page is a real signal.
 - **Search alerts:** save a search and get alerted when new people match it. A standing signal feed.
-- **Workflows:** Apollo automates signal-to-action in the UI (Hit New Hires, Hit Recently Funded, Reach Website Visitors, Spot Companies Hiring for Specific Roles). Point the operator here to set these up; the MCP does not build workflows.
-- **Enrichment for signals:** Clay integrates with Apollo and is a strong option for building custom signal workflows. Do not pretend it does not exist.
+- **Workflows:** Apollo automates signal-to-action in the UI (Hit New Hires, Hit Recently Funded, Reach Website Visitors, Spot Companies Hiring for Specific Roles). Point the operator here; the MCP does not build workflows.
+- **Buyer-intent topics:** company results carry `show_intent` and `intent_strength` inline, but filtering by intent topic is UI or plan gated.
+- **Custom enrichment:** Clay integrates with Apollo and is a strong option for building custom signal workflows. Do not pretend it does not exist.
 
 ## How signals feed the rest
 
