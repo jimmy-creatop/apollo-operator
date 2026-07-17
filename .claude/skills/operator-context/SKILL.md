@@ -110,9 +110,12 @@ Reply rate is engagement. Positive reply rate (intent) is the real scoreboard, a
 
 Full frameworks and the persona split (ATL executive vs BTL manager/IC) live in **Level 3**.
 
-## The shared context object: `profile.yaml`
+## The shared context: `brief.md` + `profile.yaml`
 
-Every skill reads from and writes to one shared profile so context compounds instead of resetting. Level 1 produces it; every later level consumes it.
+Context lives in two layers so it compounds instead of resetting:
+
+- **`brief.md`** is the narrative layer and the source of truth for the business itself: who they are, what they sell, who buys, why, proof, and voice. Level 0.5 (`business-brief`) produces it. Humans read it; agents read it first. When the two layers disagree, the brief wins.
+- **`profile.yaml`** is the machine layer skills parse: filter sets, scoring signals, saved IDs. Level 1 produces it from the brief; every later level consumes it.
 
 ```yaml
 business:
@@ -137,7 +140,7 @@ apollo:
   mailbox_ids: [<...>]
 ```
 
-If no profile exists yet, route to Level 1 to build one before doing anything else.
+If no brief exists yet, route to Level 0.5 to build one. If a brief exists but no profile, route to Level 1. Do this before anything else.
 
 ## Routing: the levels
 
@@ -145,6 +148,7 @@ Identify the request and route.
 
 | The request is about... | Go to | Skill |
 |---|---|---|
+| What the business is, its offer, buyers, proof, voice | **Level 0.5, Business brief** | `business-brief` |
 | Who to target, ICP, personas, saved searches | **Level 1, ICP and targeting** | `apollo-icp-builder` |
 | Finding, enriching, and grading a list | **Level 2, List building** | `apollo-list-builder`, `list-quality-scorecard` |
 | Writing or reviewing copy, building the sequence | **Level 3, Copy and sequences** | `apollo-sequence-builder`, `sequence-reviewer` |

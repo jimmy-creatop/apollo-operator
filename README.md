@@ -4,12 +4,13 @@
 
 The Apollo MCP can run your entire outbound motion. It just has no idea how. Point it at your account raw and it will run any search, build any sequence, and send any email you ask for, with no reason to tell you the targeting is off, the copy reads like a robot, or the send will burn your domain. It does what you say, not what you meant.
 
-Apollo Operator is the knowledge layer. It is a GTM system of 13 skills that turn the raw MCP into a guided outbound motion: who to target, how to build and grade a list, how to write sequences that get replies, how to take them live without torching your domain, and how to tell whether any of it is actually working.
+Apollo Operator is the knowledge layer. It is a GTM system of 14 skills that turn the raw MCP into a guided outbound motion: understanding the business, who to target, how to build and grade a list, how to write sequences that get replies, how to take them live without torching your domain, and how to tell whether any of it is actually working.
 
 ## What it runs
 
 One router skill (`operator-context`) loads first and hands off to specialists by stage:
 
+- **Business brief** (`business-brief`): one readable `brief.md` any agent can read once and understand the business: identity, offer, buyers, objections, proof, voice.
 - **Targeting** (`apollo-icp-builder`): turn an ICP into a real Apollo search and a scored profile.
 - **List building** (`apollo-list-builder`, `list-quality-scorecard`): search, enrich, verify, and grade before anything sends.
 - **Copy and sequences** (`apollo-sequence-builder`, `sequence-reviewer`): short, human sequences matched to the persona, reviewed for spam risk.

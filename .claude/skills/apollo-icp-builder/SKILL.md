@@ -24,9 +24,9 @@ Read `references/outbound-principles.md` if you have not. The two that drive thi
 ## Process
 
 ### 1. Anchor on the business
-Start from the website. Read it, then say back in one paragraph: what they sell, who to, and the value proposition. Propose an ICP starting point (titles, industries, size) drawn from their case studies and homepage. Ask for corrections. This anchor saves an hour of interview.
+If `brief.md` exists, read it first (see `business-brief`, Level 0.5). It answers most of this step: what they sell, who buys, why, and the voice. Say back a one-paragraph summary and propose an ICP starting point drawn from its "Who buys" and Proof sections.
 
-If there is no website, get two sentences: what they sell and to whom.
+If there is no brief, offer to build one with `business-brief` (the better path). If the operator wants to move fast instead, do the lite version: read the website, say back in one paragraph what they sell, who to, and the value proposition, then propose an ICP starting point (titles, industries, size) drawn from their case studies and homepage. Ask for corrections. If there is no website either, get two sentences: what they sell and to whom.
 
 ### 2. Separate hard filters from soft preferences
 For every criterion, ask: "If someone matches everything except this, do we still reach out?"
@@ -71,7 +71,7 @@ If you use `apollo_mixed_companies_search`, it costs 1 credit per call that retu
 Pull 50 to 100 people from the search. Put them in front of a human: "Is this your ideal customer?" Walk a few concrete examples, not just the count. Document every "avoid X" and "prioritize Y" as an exclusion or a soft preference. Do not proceed to the full list build until the samples pass.
 
 ### 8. Write the profile
-Save the ICP, the scoring signals, and the exact Apollo filter set to `profile.yaml`. The filter set is the source of truth (the MCP cannot create a named Apollo saved search, so store the filters, so store the filters, and optionally recreate the saved search by hand in the Apollo UI).
+Save the ICP, the scoring signals, and the exact Apollo filter set to `profile.yaml`. The filter set is the source of truth (the MCP cannot create a named Apollo saved search, so store the filters, and optionally recreate the saved search by hand in the Apollo UI).
 
 ```yaml
 icp:
