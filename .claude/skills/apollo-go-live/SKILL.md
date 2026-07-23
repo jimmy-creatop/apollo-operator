@@ -22,7 +22,7 @@ If any of those three is missing, go back and finish it. Do not improvise the la
 ## Process
 
 ### 1. Preflight (Level 4, non-negotiable)
-Run `apollo-deliverability` first. Confirm warmup is complete (14 days minimum, 21 optimal), bounce risk is low (100% verified), the sending schedule is business-hours/weekdays/timezone-correct (`apollo_emailer_schedules_index`), and you are sending from a dedicated domain, not the primary. If deliverability is not clean, stop here. You cannot out-send a reputation problem.
+Run `apollo-deliverability` first. Confirm warmup is complete (14 days minimum, 21 optimal), bounce risk is low (100% verified), the sending schedule is business-hours/weekdays/timezone-correct (`apollo_emailer_schedules_index`), and you are sending from a dedicated domain, not the primary. If deliverability is not clean, stop here. You cannot out-send a reputation problem. If the sending stack does not exist yet, that is a `sending-infrastructure` job, not a go-live one.
 
 ### 2. Pick the sender mailbox
 Call `apollo_email_accounts_index`. Auto-select the mailbox where `default: true`, unless the operator names another. Confirm it is a dedicated sending domain that redirects to the main site, never the company's primary domain. For volume, you can pass several mailbox IDs to rotate.

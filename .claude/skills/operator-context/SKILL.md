@@ -20,6 +20,10 @@ Built by Creatop, a B2B outbound agency. Our full point of view is in `reference
 5. **Humans approve the final copy.** AI researches, drafts, and personalizes. A person approves what actually sends.
 6. **Surface, do not block.** Flag risks and recommend, then do what the operator asks. Be firm only on deliverability (it hurts them); targeting and strategy are their call.
 
+## How Operator reaches Apollo: three lanes
+
+This library is **MCP-native**: everything below and in every other skill assumes Apollo shows up as typed `apollo_*` tools inside the model. That is the default and the right substrate for guardrailed work. Apollo can also be driven by a **CLI** (`apollo auth login`, composable, cheap on context) and a **raw REST API** (build your own client). For high-volume search or enrich and pipeline-style steps, the CLI is often the better lane. See `apollo-cli` for the three-lane map and when to reach for each. The rest of this skill covers the MCP surface.
+
 ## The Apollo MCP tool map
 
 Do not guess which tool to call. This is the surface the MCP can act on directly. Tool names are the Apollo MCP tools (`apollo_*`).
@@ -52,7 +56,9 @@ Do not guess which tool to call. This is the surface the MCP can act on directly
 - `apollo_tasks_create` / `bulk_create` / `search` / `complete` / `skip` / `update`: manual steps (calls, LinkedIn, manual email) inside a sequence.
 
 **Mailboxes and deliverability**
-- `apollo_email_accounts_index`: connected sending mailboxes and their state (see Level 4).
+- `apollo_email_accounts_index`: OAuth-connected sending mailboxes and their state, with the `default` sender flag (see Level 4).
+- `apollo_domain_purchase_index`: read-only. Domains provisioned through Apollo, with SPF/DKIM/DMARC diagnostics and the mailboxes on each (infrastructure verification, see Setup).
+- `apollo_email_account_purchase_index`: read-only. Apollo-provisioned mailboxes and their status (`pending_setup`, `active`, `inactive`). The MCP cannot buy or provision infrastructure, only read what exists.
 
 **Analytics and account**
 - `apollo_analytics_sync_report`: campaign performance.
@@ -148,12 +154,14 @@ Identify the request and route.
 
 | The request is about... | Go to | Skill |
 |---|---|---|
+| Running Apollo headless, MCP vs CLI vs API, context or credit cost of a lane | **Level 0 · Access** | `apollo-cli` |
 | What the business is, its offer, buyers, proof, voice | **Level 0.5, Business brief** | `business-brief` |
 | Who to target, ICP, personas, saved searches | **Level 1, ICP and targeting** | `apollo-icp-builder` |
 | Finding, enriching, and grading a list | **Level 2, List building** | `apollo-list-builder`, `list-quality-scorecard` |
 | Writing or reviewing copy, building the sequence | **Level 3, Copy and sequences** | `apollo-sequence-builder`, `sequence-reviewer` |
 | LinkedIn or call steps, working the task queue | **Multichannel (optional)** | `apollo-multichannel` |
 | Enrolling the list, going live, pulling contacts | **Go-live, the last mile** | `apollo-go-live` |
+| Standing up domains and mailboxes from zero, DNS, scaling infra | **Level 4 · Setup, Sending infrastructure** | `sending-infrastructure` |
 | Mailboxes, warmup, spam, bounces, sending health | **Level 4, Deliverability and send** | `apollo-deliverability` |
 | Is it working, experiments, ongoing ops | **Level 5, Iterate** | `positive-reply-scoring`, `experiment-design`, `weekly-rhythm` |
 | A reason to reach out now (buying signals, timing) | **Signals** | `apollo-signals` |
